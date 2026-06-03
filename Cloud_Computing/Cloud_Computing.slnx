@@ -3,5 +3,5 @@
     <Platform Name="x64" />
     <Platform Name="x86" />
   </Configurations>
-  <Project Path="Cloud_Computing/Cloud_Computing.vcxproj" />
+  <Project Path="Cloud_Computing/Cloud_Computing.vcxproj" Id="f6c4c29e-b019-418f-aebb-499fac91bb6c" />
 </Solution>

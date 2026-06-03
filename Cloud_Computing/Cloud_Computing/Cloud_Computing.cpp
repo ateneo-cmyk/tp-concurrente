@@ -7,7 +7,7 @@
 #include <fstream>
 #include <queue>
 //STRUCT PARA SEMAFORO Y JOBS
-int contador = 0;
+
 struct Semaforo {
     int contador;
     std::mutex mtx;
@@ -37,7 +37,9 @@ int jobId = 0;
 std::ofstream archivoLog("sistema.log");
 int NUM_GATEWAYS = 3;
 int NUM_WORKERS = 3;
+const int tareasGateway = 10;
 
+// FUNCIONES PARA SEMAFOROS
 void init(Semaforo& s, int n) {
     s.contador = n;
 }
@@ -59,8 +61,8 @@ void signal(Semaforo& s) {
 
 
 
-void workerNode(); 
 
+// FUNCIONES DE LOG
 void logEvento(const Job& tarea, const std::string& evento) {
     std::unique_lock<std::mutex> lock(mtx_log);
 
@@ -106,6 +108,15 @@ void apiGateway() {
 
         signal(hay_datos); // 3. Avisa que hay un nuevo dato disponible
     }
+}
+bool agingActivado(const Job& tarea) {
+
+    auto espera = std::chrono::duration_cast<std::chrono::milliseconds>(
+        std::chrono::steady_clock::now() - tarea.llegada).count(); // tarea.llegada guarda el momento en que se encoló el job
+
+    // Si el job lleva esperando 5000 ms (5 segundos) o más
+    // se activa el aging -> el job de baja prioridad deja de ser ignorado
+    return espera >= 5000;
 }
 
 void workerNode() {
@@ -163,34 +174,21 @@ void workerNode() {
             tareasFinalizadas++;
         }
 
-        std::this_thread::sleep_for(std::chrono::milliseconds(250)); // TIempo al liberar.
-        signal(vram);
+        // Mutex para la liberación secuencial de VRAM ---
+        {
+            std::unique_lock<std::mutex> lock(mtx_asignacionVRAM);
+            std::this_thread::sleep_for(std::chrono::milliseconds(250)); // Tiempo al liberar.
+            signal(vram);
+        }
     }
 }
 
 
-    bool agingActivado(const Job & tarea){
-        
-        auto espera = std::chrono::duration_cast<std::chrono::milliseconds>(
-            std::chrono::steady_clock::now() - tarea.llegada).count(); // tarea.llegada guarda el momento en que se encoló el job
+  
 
-        // Si el job lleva esperando 5000 ms (5 segundos) o más
-        // se activa el aging -> el job de baja prioridad deja de ser ignorado
-        return espera >= 5000;
-    }
 
-const int tareasGateway = 10;
 
-// Recursos compartidos.
-std::queue<Job> premiumQueue;
-std::queue<Job> freeQueue;
 
-// Buffer 1.
-Semaforo hay_espacio;
-Semaforo hay_datos;
-
-// Buffer 2.
-Semaforo vram;
 int main(){
 
     init(hay_espacio, 50); // Cantidad de espacios.
