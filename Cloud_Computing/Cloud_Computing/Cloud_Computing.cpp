@@ -1,3 +1,4 @@
+#define _CRT_SECURE_NO_WARNINGS
 #include <iostream>
 #include <mutex>
 #include <condition_variable>
@@ -38,6 +39,11 @@ std::ofstream archivoLog("sistema.log");
 int NUM_GATEWAYS = 3;
 int NUM_WORKERS = 3;
 const int tareasGateway = 10;
+std::mutex mtx_auditoria;
+int conteoRetardoEncolar = 0;   // El de 100ms
+int conteoRetardoAsignar = 0;   // El de 450ms
+int conteoRetardoRender = 0;    // El de 600ms
+int conteoRetardoLiberar = 0;   // El de 250ms
 
 // FUNCIONES PARA SEMAFOROS
 void init(Semaforo& s, int n) {
@@ -75,6 +81,8 @@ void logEvento(const Job& tarea, const std::string& evento) {
     std::cout << "[" << hora << "] - " << "Job " << tarea.id << " - Prioridad " << tarea.prioridad << " - " << evento << std::endl;
     archivoLog << "[" << hora << "] - " << "Job " << tarea.id << " - Prioridad " << tarea.prioridad << " - " << evento << std::endl;
 }
+
+
 void apiGateway() {
     for (int i = 0; i < tareasGateway; i++) {
         wait(hay_espacio); // Espera a que haya un hueco libre
@@ -94,6 +102,11 @@ void apiGateway() {
         logEvento(tarea, "CREADO");
 
         std::this_thread::sleep_for(std::chrono::milliseconds(100)); // Retardo antes de encolar.
+        // --- AUDITORÍA ---
+        {
+            std::unique_lock<std::mutex> lock(mtx_auditoria);
+            conteoRetardoEncolar++;
+        }
 
         // If de prioridad que decide donde encolar dependiendo prioridad.
         if (tarea.prioridad == 1) {
@@ -161,13 +174,23 @@ void workerNode() {
             std::unique_lock<std::mutex> lock(mtx_asignacionVRAM);
             wait(vram);
 
+           // std::this_thread::sleep_for(std::chrono::milliseconds(450)); // Retardo de asignación a VRAM.
+            //logEvento(tarea, "VRAM_ASIGNADO");
             std::this_thread::sleep_for(std::chrono::milliseconds(450)); // Retardo de asignación a VRAM.
-            logEvento(tarea, "VRAM_ASIGNADO");
+            logEvento(tarea, "ASIGNADO_VRAM");
+            {
+                std::unique_lock<std::mutex> lock(mtx_auditoria);
+                conteoRetardoAsignar++;
+            }
+
         }
 
         std::this_thread::sleep_for(std::chrono::milliseconds(600)); // Retardo durante renderizado.
         logEvento(tarea, "FINALIZADO");
-
+        {
+            std::unique_lock<std::mutex> lock(mtx_auditoria);
+            conteoRetardoRender++; // <-- CORREGIDO: Sumamos el contador de renderizado faltante
+        }
         {
             // Mutex interno
             std::unique_lock<std::mutex> lock(mtx_finalizadas);
@@ -179,6 +202,10 @@ void workerNode() {
             std::unique_lock<std::mutex> lock(mtx_asignacionVRAM);
             std::this_thread::sleep_for(std::chrono::milliseconds(250)); // Tiempo al liberar.
             signal(vram);
+            {
+                std::unique_lock<std::mutex> lock(mtx_auditoria);
+                conteoRetardoLiberar++;
+            }
         }
     }
 }
@@ -217,6 +244,24 @@ int main(){
     {
         w.join();
     }
+
+    std::cout << "\n=======================================================\n";
+    std::cout << "📋 REPORTE DE AUDITORÍA DE TIEMPOS (CONSIDERACIONES TP)\n";
+    std::cout << "=======================================================\n";
+    std::cout << "• Retardo Ingreso a Queue (100ms)    -> Aplicado " << conteoRetardoEncolar << " veces.\n";
+    std::cout << "  [Tiempo total retenido en Gateways : " << (conteoRetardoEncolar * 100) << " ms]\n\n";
+
+    std::cout << "• Retardo Asignación VRAM (450ms)   -> Aplicado " << conteoRetardoAsignar << " veces.\n";
+    std::cout << "  [Tiempo total en zonas críticas de entrada: " << (conteoRetardoAsignar * 450) << " ms]\n\n";
+
+    std::cout << "• Tiempo Carga de Assets (600ms)    -> Aplicado " << tareasFinalizadas << " veces.\n";
+    std::cout << "  [Tiempo neto de procesamiento simulado   : " << (conteoRetardoRender * 600) << " ms]\n\n";
+
+    std::cout << "• Retardo Liberación VRAM (250ms)   -> Aplicado " << conteoRetardoLiberar << " veces.\n";
+    std::cout << "  [Tiempo total en zonas críticas de salida : " << (conteoRetardoLiberar * 250) << " ms]\n";
+    std::cout << "=======================================================\n";
+    std::cout << "Total Tareas Finalizadas Correctamente: " << tareasFinalizadas << "\n";
+    std::cout << "=======================================================\n";
 
     // Contador final
     std::cout << "\nTareas finalizadas: "
