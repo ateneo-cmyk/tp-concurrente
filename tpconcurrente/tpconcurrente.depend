@@ -1,0 +1,37 @@
+# depslib dependency file v1.0
+1780546123 source:c:\users\matias\downloads\tpconcurrente\logger.cpp
+	"logger.h"
+	<fstream>
+	<mutex>
+	<chrono>
+	<thread>
+	<iostream>
+
+1780165719 c:\users\matias\downloads\tpconcurrente\logger.h
+
+1780677980 source:c:\users\matias\downloads\tpconcurrente\main.cpp
+	"sistema_render.h"
+	<iostream>
+	<thread>
+	<vector>
+	<chrono>
+
+1780677925 c:\users\matias\downloads\tpconcurrente\sistema_render.h
+	<chrono>
+
+1780165827 source:c:\users\matias\downloads\tpconcurrente\semaforo.cpp
+	"semaforo.h"
+
+1780165981 c:\users\matias\downloads\tpconcurrente\semaforo.h
+	<mutex>
+	<condition_variable>
+
+1780677944 source:c:\users\matias\downloads\tpconcurrente\sistema_render.cpp
+	"sistema_render.h"
+	"semaforo.h"
+	"logger.h"
+	<iostream>
+	<thread>
+	<mutex>
+	<vector>
+
