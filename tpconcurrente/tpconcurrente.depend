@@ -35,3 +35,39 @@
 	<mutex>
 	<vector>
 
+1780725092 source:e:\tp\tp-concurrente\tpconcurrente\logger.cpp
+	"logger.h"
+	<fstream>
+	<mutex>
+	<chrono>
+	<thread>
+	<iostream>
+
+1780725092 e:\tp\tp-concurrente\tpconcurrente\logger.h
+
+1780725092 source:e:\tp\tp-concurrente\tpconcurrente\main.cpp
+	"sistema_render.h"
+	<iostream>
+	<thread>
+	<vector>
+	<chrono>
+
+1780725092 e:\tp\tp-concurrente\tpconcurrente\sistema_render.h
+	<chrono>
+
+1780725092 source:e:\tp\tp-concurrente\tpconcurrente\semaforo.cpp
+	"semaforo.h"
+
+1780725092 e:\tp\tp-concurrente\tpconcurrente\semaforo.h
+	<mutex>
+	<condition_variable>
+
+1780725092 source:e:\tp\tp-concurrente\tpconcurrente\sistema_render.cpp
+	"sistema_render.h"
+	"semaforo.h"
+	"logger.h"
+	<iostream>
+	<thread>
+	<mutex>
+	<vector>
+
