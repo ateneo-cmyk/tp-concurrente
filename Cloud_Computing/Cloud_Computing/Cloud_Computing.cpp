@@ -7,6 +7,7 @@
 #include <ctime>
 #include <fstream>
 #include <queue>
+
 //STRUCT PARA SEMAFORO Y JOBS
 
 struct Semaforo {
@@ -267,6 +268,8 @@ int main(){
     std::cout << "\nTareas finalizadas: "
         << tareasFinalizadas
         << std::endl;
+
+	
 
     return 0;;
 }

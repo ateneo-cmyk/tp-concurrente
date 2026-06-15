@@ -1,141 +1,141 @@
-[10:17:37] - Job 0 - Prioridad 1 - CREADO
-[10:17:37] - Job 0 - Prioridad 1 - EN_COLA
-[10:17:37] - Job 1 - Prioridad 1 - CREADO
-[10:17:37] - Job 1 - Prioridad 1 - EN_COLA
-[10:17:37] - Job 2 - Prioridad 0 - CREADO
-[10:17:37] - Job 2 - Prioridad 0 - EN_COLA
-[10:17:37] - Job 3 - Prioridad 0 - CREADO
-[10:17:37] - Job 3 - Prioridad 0 - EN_COLA
-[10:17:37] - Job 4 - Prioridad 1 - CREADO
-[10:17:37] - Job 4 - Prioridad 1 - EN_COLA
-[10:17:37] - Job 5 - Prioridad 0 - CREADO
-[10:17:37] - Job 5 - Prioridad 0 - EN_COLA
-[10:17:37] - Job 6 - Prioridad 0 - CREADO
-[10:17:37] - Job 6 - Prioridad 0 - EN_COLA
-[10:17:37] - Job 7 - Prioridad 0 - CREADO
-[10:17:37] - Job 7 - Prioridad 0 - EN_COLA
-[10:17:37] - Job 8 - Prioridad 0 - CREADO
-[10:17:38] - Job 8 - Prioridad 0 - EN_COLA
-[10:17:38] - Job 9 - Prioridad 0 - CREADO
-[10:17:38] - Job 9 - Prioridad 0 - EN_COLA
-[10:17:38] - Job 10 - Prioridad 1 - CREADO
-[10:17:38] - Job 10 - Prioridad 1 - EN_COLA
-[10:17:38] - Job 11 - Prioridad 1 - CREADO
-[10:17:38] - Job 11 - Prioridad 1 - EN_COLA
-[10:17:38] - Job 12 - Prioridad 0 - CREADO
-[10:17:38] - Job 12 - Prioridad 0 - EN_COLA
-[10:17:38] - Job 13 - Prioridad 0 - CREADO
-[10:17:38] - Job 13 - Prioridad 0 - EN_COLA
-[10:17:38] - Job 14 - Prioridad 1 - CREADO
-[10:17:38] - Job 14 - Prioridad 1 - EN_COLA
-[10:17:38] - Job 15 - Prioridad 0 - CREADO
-[10:17:38] - Job 15 - Prioridad 0 - EN_COLA
-[10:17:38] - Job 16 - Prioridad 0 - CREADO
-[10:17:38] - Job 16 - Prioridad 0 - EN_COLA
-[10:17:38] - Job 17 - Prioridad 0 - CREADO
-[10:17:39] - Job 17 - Prioridad 0 - EN_COLA
-[10:17:39] - Job 18 - Prioridad 0 - CREADO
-[10:17:39] - Job 18 - Prioridad 0 - EN_COLA
-[10:17:39] - Job 19 - Prioridad 0 - CREADO
-[10:17:39] - Job 19 - Prioridad 0 - EN_COLA
-[10:17:39] - Job 20 - Prioridad 1 - CREADO
-[10:17:39] - Job 20 - Prioridad 1 - EN_COLA
-[10:17:39] - Job 21 - Prioridad 1 - CREADO
-[10:17:39] - Job 21 - Prioridad 1 - EN_COLA
-[10:17:39] - Job 22 - Prioridad 0 - CREADO
-[10:17:39] - Job 22 - Prioridad 0 - EN_COLA
-[10:17:39] - Job 23 - Prioridad 0 - CREADO
-[10:17:39] - Job 23 - Prioridad 0 - EN_COLA
-[10:17:39] - Job 24 - Prioridad 1 - CREADO
-[10:17:39] - Job 24 - Prioridad 1 - EN_COLA
-[10:17:39] - Job 25 - Prioridad 0 - CREADO
-[10:17:39] - Job 25 - Prioridad 0 - EN_COLA
-[10:17:39] - Job 26 - Prioridad 0 - CREADO
-[10:17:39] - Job 26 - Prioridad 0 - EN_COLA
-[10:17:40] - Job 27 - Prioridad 0 - CREADO
-[10:17:40] - Job 27 - Prioridad 0 - EN_COLA
-[10:17:40] - Job 28 - Prioridad 0 - CREADO
-[10:17:40] - Job 28 - Prioridad 0 - EN_COLA
-[10:17:40] - Job 29 - Prioridad 0 - CREADO
-[10:17:40] - Job 29 - Prioridad 0 - EN_COLA
-[10:17:40] - Job 0 - Prioridad 1 - ASIGNADO_VRAM
-[10:17:41] - Job 1 - Prioridad 1 - ASIGNADO_VRAM
-[10:17:41] - Job 0 - Prioridad 1 - FINALIZADO
-[10:17:41] - Job 4 - Prioridad 1 - ASIGNADO_VRAM
-[10:17:41] - Job 1 - Prioridad 1 - FINALIZADO
-[10:17:42] - Job 4 - Prioridad 1 - FINALIZADO
-[10:17:42] - Job 10 - Prioridad 1 - ASIGNADO_VRAM
-[10:17:42] - Job 2 - Prioridad 0 - AGING ACTIVADO
-[10:17:42] - Job 3 - Prioridad 0 - AGING ACTIVADO
-[10:17:43] - Job 10 - Prioridad 1 - FINALIZADO
-[10:17:43] - Job 2 - Prioridad 0 - ASIGNADO_VRAM
-[10:17:43] - Job 3 - Prioridad 0 - ASIGNADO_VRAM
-[10:17:44] - Job 2 - Prioridad 0 - FINALIZADO
-[10:17:44] - Job 5 - Prioridad 0 - AGING ACTIVADO
-[10:17:44] - Job 6 - Prioridad 0 - AGING ACTIVADO
-[10:17:44] - Job 3 - Prioridad 0 - FINALIZADO
-[10:17:44] - Job 5 - Prioridad 0 - ASIGNADO_VRAM
-[10:17:45] - Job 6 - Prioridad 0 - ASIGNADO_VRAM
-[10:17:45] - Job 5 - Prioridad 0 - FINALIZADO
-[10:17:45] - Job 7 - Prioridad 0 - AGING ACTIVADO
-[10:17:45] - Job 8 - Prioridad 0 - AGING ACTIVADO
-[10:17:45] - Job 6 - Prioridad 0 - FINALIZADO
-[10:17:46] - Job 7 - Prioridad 0 - ASIGNADO_VRAM
-[10:17:46] - Job 8 - Prioridad 0 - ASIGNADO_VRAM
-[10:17:46] - Job 7 - Prioridad 0 - FINALIZADO
-[10:17:47] - Job 9 - Prioridad 0 - AGING ACTIVADO
-[10:17:47] - Job 12 - Prioridad 0 - AGING ACTIVADO
-[10:17:47] - Job 8 - Prioridad 0 - FINALIZADO
-[10:17:47] - Job 9 - Prioridad 0 - ASIGNADO_VRAM
-[10:17:48] - Job 12 - Prioridad 0 - ASIGNADO_VRAM
-[10:17:48] - Job 9 - Prioridad 0 - FINALIZADO
-[10:17:48] - Job 13 - Prioridad 0 - AGING ACTIVADO
-[10:17:48] - Job 15 - Prioridad 0 - AGING ACTIVADO
-[10:17:48] - Job 12 - Prioridad 0 - FINALIZADO
-[10:17:49] - Job 13 - Prioridad 0 - ASIGNADO_VRAM
-[10:17:49] - Job 15 - Prioridad 0 - ASIGNADO_VRAM
-[10:17:49] - Job 13 - Prioridad 0 - FINALIZADO
-[10:17:49] - Job 16 - Prioridad 0 - AGING ACTIVADO
-[10:17:50] - Job 17 - Prioridad 0 - AGING ACTIVADO
-[10:17:50] - Job 15 - Prioridad 0 - FINALIZADO
-[10:17:50] - Job 16 - Prioridad 0 - ASIGNADO_VRAM
-[10:17:51] - Job 17 - Prioridad 0 - ASIGNADO_VRAM
-[10:17:51] - Job 16 - Prioridad 0 - FINALIZADO
-[10:17:51] - Job 18 - Prioridad 0 - AGING ACTIVADO
-[10:17:51] - Job 19 - Prioridad 0 - AGING ACTIVADO
-[10:17:51] - Job 17 - Prioridad 0 - FINALIZADO
-[10:17:52] - Job 18 - Prioridad 0 - ASIGNADO_VRAM
-[10:17:52] - Job 19 - Prioridad 0 - ASIGNADO_VRAM
-[10:17:52] - Job 18 - Prioridad 0 - FINALIZADO
-[10:17:52] - Job 22 - Prioridad 0 - AGING ACTIVADO
-[10:17:53] - Job 23 - Prioridad 0 - AGING ACTIVADO
-[10:17:53] - Job 19 - Prioridad 0 - FINALIZADO
-[10:17:53] - Job 22 - Prioridad 0 - ASIGNADO_VRAM
-[10:17:53] - Job 23 - Prioridad 0 - ASIGNADO_VRAM
-[10:17:54] - Job 22 - Prioridad 0 - FINALIZADO
-[10:17:54] - Job 25 - Prioridad 0 - AGING ACTIVADO
-[10:17:54] - Job 26 - Prioridad 0 - AGING ACTIVADO
-[10:17:54] - Job 23 - Prioridad 0 - FINALIZADO
-[10:17:54] - Job 25 - Prioridad 0 - ASIGNADO_VRAM
-[10:17:55] - Job 26 - Prioridad 0 - ASIGNADO_VRAM
-[10:17:55] - Job 25 - Prioridad 0 - FINALIZADO
-[10:17:55] - Job 27 - Prioridad 0 - AGING ACTIVADO
-[10:17:55] - Job 28 - Prioridad 0 - AGING ACTIVADO
-[10:17:56] - Job 26 - Prioridad 0 - FINALIZADO
-[10:17:56] - Job 27 - Prioridad 0 - ASIGNADO_VRAM
-[10:17:56] - Job 28 - Prioridad 0 - ASIGNADO_VRAM
-[10:17:57] - Job 27 - Prioridad 0 - FINALIZADO
-[10:17:57] - Job 29 - Prioridad 0 - AGING ACTIVADO
-[10:17:57] - Job 28 - Prioridad 0 - FINALIZADO
-[10:17:57] - Job 29 - Prioridad 0 - ASIGNADO_VRAM
-[10:17:58] - Job 11 - Prioridad 1 - ASIGNADO_VRAM
-[10:17:58] - Job 29 - Prioridad 0 - FINALIZADO
-[10:17:58] - Job 11 - Prioridad 1 - FINALIZADO
-[10:17:59] - Job 20 - Prioridad 1 - ASIGNADO_VRAM
-[10:17:59] - Job 14 - Prioridad 1 - ASIGNADO_VRAM
-[10:17:59] - Job 20 - Prioridad 1 - FINALIZADO
-[10:18:00] - Job 14 - Prioridad 1 - FINALIZADO
-[10:18:00] - Job 21 - Prioridad 1 - ASIGNADO_VRAM
-[10:18:01] - Job 21 - Prioridad 1 - FINALIZADO
-[10:18:01] - Job 24 - Prioridad 1 - ASIGNADO_VRAM
-[10:18:02] - Job 24 - Prioridad 1 - FINALIZADO
+[08:39:25] - Job 0 - Prioridad 1 - CREADO
+[08:39:25] - Job 0 - Prioridad 1 - EN_COLA
+[08:39:25] - Job 1 - Prioridad 1 - CREADO
+[08:39:25] - Job 1 - Prioridad 1 - EN_COLA
+[08:39:25] - Job 2 - Prioridad 0 - CREADO
+[08:39:25] - Job 2 - Prioridad 0 - EN_COLA
+[08:39:25] - Job 3 - Prioridad 0 - CREADO
+[08:39:25] - Job 3 - Prioridad 0 - EN_COLA
+[08:39:25] - Job 4 - Prioridad 1 - CREADO
+[08:39:25] - Job 4 - Prioridad 1 - EN_COLA
+[08:39:25] - Job 5 - Prioridad 0 - CREADO
+[08:39:25] - Job 5 - Prioridad 0 - EN_COLA
+[08:39:25] - Job 6 - Prioridad 0 - CREADO
+[08:39:25] - Job 6 - Prioridad 0 - EN_COLA
+[08:39:25] - Job 7 - Prioridad 0 - CREADO
+[08:39:25] - Job 7 - Prioridad 0 - EN_COLA
+[08:39:25] - Job 8 - Prioridad 0 - CREADO
+[08:39:26] - Job 8 - Prioridad 0 - EN_COLA
+[08:39:26] - Job 9 - Prioridad 0 - CREADO
+[08:39:26] - Job 9 - Prioridad 0 - EN_COLA
+[08:39:26] - Job 10 - Prioridad 1 - CREADO
+[08:39:26] - Job 10 - Prioridad 1 - EN_COLA
+[08:39:26] - Job 11 - Prioridad 1 - CREADO
+[08:39:26] - Job 11 - Prioridad 1 - EN_COLA
+[08:39:26] - Job 12 - Prioridad 0 - CREADO
+[08:39:26] - Job 12 - Prioridad 0 - EN_COLA
+[08:39:26] - Job 13 - Prioridad 0 - CREADO
+[08:39:26] - Job 13 - Prioridad 0 - EN_COLA
+[08:39:26] - Job 14 - Prioridad 1 - CREADO
+[08:39:26] - Job 14 - Prioridad 1 - EN_COLA
+[08:39:26] - Job 15 - Prioridad 0 - CREADO
+[08:39:26] - Job 15 - Prioridad 0 - EN_COLA
+[08:39:26] - Job 16 - Prioridad 0 - CREADO
+[08:39:26] - Job 16 - Prioridad 0 - EN_COLA
+[08:39:26] - Job 17 - Prioridad 0 - CREADO
+[08:39:27] - Job 17 - Prioridad 0 - EN_COLA
+[08:39:27] - Job 18 - Prioridad 0 - CREADO
+[08:39:27] - Job 18 - Prioridad 0 - EN_COLA
+[08:39:27] - Job 19 - Prioridad 0 - CREADO
+[08:39:27] - Job 19 - Prioridad 0 - EN_COLA
+[08:39:27] - Job 20 - Prioridad 1 - CREADO
+[08:39:27] - Job 20 - Prioridad 1 - EN_COLA
+[08:39:27] - Job 21 - Prioridad 1 - CREADO
+[08:39:27] - Job 21 - Prioridad 1 - EN_COLA
+[08:39:27] - Job 22 - Prioridad 0 - CREADO
+[08:39:27] - Job 22 - Prioridad 0 - EN_COLA
+[08:39:27] - Job 23 - Prioridad 0 - CREADO
+[08:39:27] - Job 23 - Prioridad 0 - EN_COLA
+[08:39:27] - Job 24 - Prioridad 1 - CREADO
+[08:39:27] - Job 0 - Prioridad 1 - ASIGNADO_VRAM
+[08:39:27] - Job 24 - Prioridad 1 - EN_COLA
+[08:39:27] - Job 25 - Prioridad 0 - CREADO
+[08:39:27] - Job 25 - Prioridad 0 - EN_COLA
+[08:39:27] - Job 26 - Prioridad 0 - CREADO
+[08:39:28] - Job 26 - Prioridad 0 - EN_COLA
+[08:39:28] - Job 27 - Prioridad 0 - CREADO
+[08:39:28] - Job 27 - Prioridad 0 - EN_COLA
+[08:39:28] - Job 28 - Prioridad 0 - CREADO
+[08:39:28] - Job 1 - Prioridad 1 - ASIGNADO_VRAM
+[08:39:28] - Job 28 - Prioridad 0 - EN_COLA
+[08:39:28] - Job 29 - Prioridad 0 - CREADO
+[08:39:28] - Job 0 - Prioridad 1 - FINALIZADO
+[08:39:28] - Job 29 - Prioridad 0 - EN_COLA
+[08:39:28] - Job 1 - Prioridad 1 - FINALIZADO
+[08:39:29] - Job 4 - Prioridad 1 - ASIGNADO_VRAM
+[08:39:29] - Job 10 - Prioridad 1 - ASIGNADO_VRAM
+[08:39:29] - Job 4 - Prioridad 1 - FINALIZADO
+[08:39:30] - Job 10 - Prioridad 1 - FINALIZADO
+[08:39:30] - Job 11 - Prioridad 1 - ASIGNADO_VRAM
+[08:39:30] - Job 14 - Prioridad 1 - ASIGNADO_VRAM
+[08:39:31] - Job 11 - Prioridad 1 - FINALIZADO
+[08:39:31] - Job 2 - Prioridad 0 - AGING ACTIVADO
+[08:39:31] - Job 3 - Prioridad 0 - AGING ACTIVADO
+[08:39:31] - Job 14 - Prioridad 1 - FINALIZADO
+[08:39:31] - Job 2 - Prioridad 0 - ASIGNADO_VRAM
+[08:39:32] - Job 3 - Prioridad 0 - ASIGNADO_VRAM
+[08:39:32] - Job 2 - Prioridad 0 - FINALIZADO
+[08:39:32] - Job 5 - Prioridad 0 - AGING ACTIVADO
+[08:39:32] - Job 6 - Prioridad 0 - AGING ACTIVADO
+[08:39:33] - Job 3 - Prioridad 0 - FINALIZADO
+[08:39:33] - Job 5 - Prioridad 0 - ASIGNADO_VRAM
+[08:39:33] - Job 6 - Prioridad 0 - ASIGNADO_VRAM
+[08:39:33] - Job 5 - Prioridad 0 - FINALIZADO
+[08:39:34] - Job 7 - Prioridad 0 - AGING ACTIVADO
+[08:39:34] - Job 8 - Prioridad 0 - AGING ACTIVADO
+[08:39:34] - Job 6 - Prioridad 0 - FINALIZADO
+[08:39:34] - Job 7 - Prioridad 0 - ASIGNADO_VRAM
+[08:39:35] - Job 8 - Prioridad 0 - ASIGNADO_VRAM
+[08:39:35] - Job 7 - Prioridad 0 - FINALIZADO
+[08:39:35] - Job 9 - Prioridad 0 - AGING ACTIVADO
+[08:39:35] - Job 12 - Prioridad 0 - AGING ACTIVADO
+[08:39:35] - Job 8 - Prioridad 0 - FINALIZADO
+[08:39:36] - Job 9 - Prioridad 0 - ASIGNADO_VRAM
+[08:39:36] - Job 12 - Prioridad 0 - ASIGNADO_VRAM
+[08:39:36] - Job 9 - Prioridad 0 - FINALIZADO
+[08:39:37] - Job 13 - Prioridad 0 - AGING ACTIVADO
+[08:39:37] - Job 15 - Prioridad 0 - AGING ACTIVADO
+[08:39:37] - Job 12 - Prioridad 0 - FINALIZADO
+[08:39:37] - Job 13 - Prioridad 0 - ASIGNADO_VRAM
+[08:39:38] - Job 15 - Prioridad 0 - ASIGNADO_VRAM
+[08:39:38] - Job 13 - Prioridad 0 - FINALIZADO
+[08:39:38] - Job 16 - Prioridad 0 - AGING ACTIVADO
+[08:39:38] - Job 17 - Prioridad 0 - AGING ACTIVADO
+[08:39:38] - Job 15 - Prioridad 0 - FINALIZADO
+[08:39:39] - Job 16 - Prioridad 0 - ASIGNADO_VRAM
+[08:39:39] - Job 17 - Prioridad 0 - ASIGNADO_VRAM
+[08:39:39] - Job 16 - Prioridad 0 - FINALIZADO
+[08:39:39] - Job 18 - Prioridad 0 - AGING ACTIVADO
+[08:39:40] - Job 19 - Prioridad 0 - AGING ACTIVADO
+[08:39:40] - Job 17 - Prioridad 0 - FINALIZADO
+[08:39:40] - Job 18 - Prioridad 0 - ASIGNADO_VRAM
+[08:39:41] - Job 19 - Prioridad 0 - ASIGNADO_VRAM
+[08:39:41] - Job 18 - Prioridad 0 - FINALIZADO
+[08:39:41] - Job 22 - Prioridad 0 - AGING ACTIVADO
+[08:39:41] - Job 23 - Prioridad 0 - AGING ACTIVADO
+[08:39:41] - Job 19 - Prioridad 0 - FINALIZADO
+[08:39:42] - Job 22 - Prioridad 0 - ASIGNADO_VRAM
+[08:39:42] - Job 23 - Prioridad 0 - ASIGNADO_VRAM
+[08:39:42] - Job 22 - Prioridad 0 - FINALIZADO
+[08:39:42] - Job 25 - Prioridad 0 - AGING ACTIVADO
+[08:39:43] - Job 26 - Prioridad 0 - AGING ACTIVADO
+[08:39:43] - Job 23 - Prioridad 0 - FINALIZADO
+[08:39:43] - Job 25 - Prioridad 0 - ASIGNADO_VRAM
+[08:39:43] - Job 26 - Prioridad 0 - ASIGNADO_VRAM
+[08:39:44] - Job 25 - Prioridad 0 - FINALIZADO
+[08:39:44] - Job 27 - Prioridad 0 - AGING ACTIVADO
+[08:39:44] - Job 28 - Prioridad 0 - AGING ACTIVADO
+[08:39:44] - Job 26 - Prioridad 0 - FINALIZADO
+[08:39:44] - Job 27 - Prioridad 0 - ASIGNADO_VRAM
+[08:39:45] - Job 28 - Prioridad 0 - ASIGNADO_VRAM
+[08:39:45] - Job 27 - Prioridad 0 - FINALIZADO
+[08:39:45] - Job 29 - Prioridad 0 - AGING ACTIVADO
+[08:39:46] - Job 28 - Prioridad 0 - FINALIZADO
+[08:39:46] - Job 20 - Prioridad 1 - ASIGNADO_VRAM
+[08:39:46] - Job 29 - Prioridad 0 - ASIGNADO_VRAM
+[08:39:47] - Job 20 - Prioridad 1 - FINALIZADO
+[08:39:47] - Job 29 - Prioridad 0 - FINALIZADO
+[08:39:47] - Job 21 - Prioridad 1 - ASIGNADO_VRAM
+[08:39:48] - Job 21 - Prioridad 1 - FINALIZADO
+[08:39:48] - Job 24 - Prioridad 1 - ASIGNADO_VRAM
+[08:39:49] - Job 24 - Prioridad 1 - FINALIZADO
