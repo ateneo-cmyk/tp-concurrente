@@ -140,10 +140,14 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Cloud_Computing.cpp" />
-    <ClCompile Include="hola.cpp" />
+    <ClCompile Include="logger.cpp" />
+    <ClCompile Include="semaforo.cpp" />
+    <ClCompile Include="sistema_render.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="hola.h" />
+    <ClInclude Include="logger.h" />
+    <ClInclude Include="semaforo.h" />
+    <ClInclude Include="sistema_render.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

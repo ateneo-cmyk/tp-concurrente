@@ -6,7 +6,7 @@ struct Job {
     std::chrono::time_point<std::chrono::steady_clock> timestamp_creacion;
 
     ///declaramos el operador para la priority_queue
-    bool operator<(const Job& otro) const;
+    //bool operator<(const Job& otro) const;
 };
 
 ///interfaz del sistema

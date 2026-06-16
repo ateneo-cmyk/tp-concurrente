@@ -4,7 +4,7 @@
 /// ESTRUCTURA SEMAFORO
 struct Semaforo {
 
-    int contador;
+    int contador=0;
 
     std::mutex mtx;
 
