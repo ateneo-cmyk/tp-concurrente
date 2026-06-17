@@ -18,9 +18,8 @@ Semaforo slots_vram;
 ///representación física de la memoria
 ///un valor de -1 indica que el slot está vacio
 int memoria_vram[5] = { -1, -1, -1, -1, -1 };
-/// Candados para  entrada y salida de la VRAM
-std::mutex mtx_asignacion;
-std::mutex mtx_liberacion;
+/// Candado único para acceso a la VRAM (entrada y salida)
+std::mutex mtx_vram;
 int trabajosFinalizados = 0;
 std::mutex mtx_contador;
 
@@ -128,9 +127,9 @@ void consumidor(int idConsumidor, int cantidadTareas) {
         wait(slots_vram);
         int mi_slot = -1;
         {
-            // Tomamos el candado
-            std::unique_lock<std::mutex> lockAsignacion(mtx_asignacion);
-            //buscamos cuál de los 5 espacios está libre (-1)
+            // Tomamos el candado único de VRAM para buscar y ocupar un slot
+            std::unique_lock<std::mutex> lockVram(mtx_vram);
+            // buscamos cuál de los 5 espacios está libre (-1)
             for (int i = 0; i < 5; i++) {
                 if (memoria_vram[i] == -1) {
                     memoria_vram[i] = jobActual.id; // Ocupamos la memoria
@@ -141,20 +140,22 @@ void consumidor(int idConsumidor, int cantidadTareas) {
             logEvent(jobActual.id, jobActual.prioridad, "ASIGNADO_VRAM");
             // Retardo de 450ms.
             std::this_thread::sleep_for(std::chrono::milliseconds(450));
-        } //Se libera mtx_asignacion
+        } //Se libera mtx_vram
         /// ZONA NO CRÍTICA: PROCESAMIENTO GPU
         //NO hay candados tomados (solo tenemos el  semaforo).
         //nos da  hasta 5 hilos que pueden estar ejecutando
         std::this_thread::sleep_for(std::chrono::milliseconds(600));
         ///SALIDA DE VRAM
         {
-            /// Tomamos el candado de liberacion
-            std::unique_lock<std::mutex> lockLiberacion(mtx_liberacion);
-            memoria_vram[mi_slot] = -1;
-            logEvent(jobActual.id, jobActual.prioridad, "FINALIZADO");
-            // Retardo de 250ms. solo un hilo a la vez puede estar liberando
-            std::this_thread::sleep_for(std::chrono::milliseconds(250));
-        } //se libera mtx_liberacion.
+            /// Tomamos el candado único de VRAM para liberar el slot
+            std::unique_lock<std::mutex> lockVram(mtx_vram);
+            if (mi_slot >= 0 && mi_slot < 5) {
+                memoria_vram[mi_slot] = -1;
+                logEvent(jobActual.id, jobActual.prioridad, "FINALIZADO");
+                // Retardo de 250ms. solo un hilo a la vez puede estar liberando
+                std::this_thread::sleep_for(std::chrono::milliseconds(250));
+            }
+        } //se libera mtx_vram.
         ///devolvemos el "ticket" de la VRAM al semáforo general,
         /// despertando a algún hilo que estuviera esperando en wait(slots_vram).
         signal(slots_vram);

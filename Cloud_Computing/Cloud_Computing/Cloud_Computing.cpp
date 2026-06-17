@@ -3,6 +3,7 @@
 #include <thread>
 #include <vector>
 #include <chrono>
+#include <cstdlib>
 int main() {
     ///inicializar los semaforos
     inicializarSistema();
@@ -40,6 +41,9 @@ int main() {
     std::cout << "\n>>> SIMULACION FINALIZADA <<<\n";
     std::cout << "Trabajos finalizados con exito: " << obtenerTrabajosFinalizados() << "\n";
     std::cout << "Revise la consola o el archivo 'sistema.log' para la auditoria.\n";
+
+    // Pausa para que la consola permanezca abierta al finalizar (Windows)
+    std::system("pause");
 
     return 0;
 }
