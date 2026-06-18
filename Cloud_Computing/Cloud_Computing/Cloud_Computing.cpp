@@ -11,18 +11,19 @@ int main() {
     int opcion;
 
     std::cout << "=== SIMULADOR DE RENDERIZADO ===\n";
-    std::cout << "1. Prueba Config C (3 Productores, 3 Consumidores - 15 tareas c/u)\n";
+    std::cout << "1. Prueba Config C (3 Productores, 1 Consumidor - 45 tareas c/u)\n";// las tareas se dividen dependiendo cuantos consumidores tengas
     std::cout << "2. Prueba Carga Masiva (1 Productor inyectando 1500 jobs, 3 Consumidores)\n";
     std::cout << "3. Prueba de Vacuidad (0 Jobs)\n";
+	std::cout << "4. Prueba de Saturacion de Recursos (8 Jobs Premium)\n";
     std::cout << "Ingrese la prueba a ejecutar: ";
     std::cin >> opcion;
 
     switch (opcion) {
     case 1:
         std::cout << "\nEjecutando Configuracion C...\n";
-        //ejecutarPrueba(1, 2, 15);
-        //ejecutarPrueba(3, 3, 15);
-        ejecutarPrueba(3, 1, 15);
+		//ejecutarPrueba(1, 2, 15); // 15 tareas para 1 productor, 2 consumidores, cada consumidor se encarga de procesar 15 tareas (30 tareas en total)
+		//ejecutarPrueba(3, 3, 15); // 15 tareas para 3 productores, 3 consumidores, cada consumidor se encarga de procesar 15 tareas (45 tareas en total)
+		ejecutarPrueba(3, 1, 15);// 15 tareas para 3 productores, 1 consumidor, el consumidor se encarga de procesar las 45 tareas (15 por productor)   
 
         break;
     case 2:
@@ -33,6 +34,11 @@ int main() {
         std::cout << "\nEjecutando Vacuidad...\n";
         ejecutarPrueba(3, 3, 0);
         break;
+    case 4:
+		std::cout << "\nEjecutando Prueba de Saturacion de Recursos 8 Jobs Premium\n";
+		// comentar linea de prioridad aleatoria en productor para que todas las tareas sean premium
+        ejecutarPruebaEspecial(1, 3, 8); // 8 tareas Premium generadas por productores fijos
+		break;
     default:
         std::cout << "\nOpcion invalida.\n";
         return 1;

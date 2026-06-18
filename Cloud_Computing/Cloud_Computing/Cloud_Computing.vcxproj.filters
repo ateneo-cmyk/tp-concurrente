@@ -32,10 +32,10 @@
     <ClInclude Include="semaforo.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
-    <ClInclude Include="sistema_render.h">
+    <ClInclude Include="logger.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
-    <ClInclude Include="logger.h">
+    <ClInclude Include="sistema_render.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
   </ItemGroup>

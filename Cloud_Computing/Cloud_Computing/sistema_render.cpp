@@ -23,6 +23,8 @@ std::mutex mtx_vram;
 int trabajosFinalizados = 0;
 std::mutex mtx_contador;
 
+static const int prioridadFija = 1; // 1: Premium, 0: Free
+
 /// INTERFAZ DEL SISTEMA
 
 void inicializarSistema() {
@@ -60,7 +62,43 @@ void productor(int idProductor, int cantidadTareas) {
         //retardo simulado de ingreso a la cola
         std::this_thread::sleep_for(std::chrono::milliseconds(100));
     }
+
 }
+void productorEspecial(int idProductor, int cantidadTareas) {
+    for (int i = 0; i < cantidadTareas; ++i) {
+        Job nuevoJob;
+        {
+            // asignación segura del ID global
+            std::unique_lock<std::mutex> lockId(mtx_jobId);
+            nuevoJob.id = generador_id++;
+        }
+		// prioridad 1 fija para esta prueba especial
+        nuevoJob.prioridad = 1;
+        nuevoJob.timestamp_creacion = std::chrono::steady_clock::now();
+        // ---ingreso al buffer 1---
+        {
+            // usamos el mutex para que otros productores no escriban a la vez
+            std::unique_lock<std::mutex> lockCola(mtx_cola);
+
+            // insertamos el job al final
+            buffer_mensajes.push_back(nuevoJob);
+
+            // registro de evento
+            logEvent(nuevoJob.id, nuevoJob.prioridad, "CREADO");
+            logEvent(nuevoJob.id, nuevoJob.prioridad, "EN_COLA");
+        } // se libera el lock
+
+        // despertamos a un consumidor avisando que hay un nuevo job
+        signal(hay_tareas);
+
+        //retardo simulado de ingreso a la cola
+        std::this_thread::sleep_for(std::chrono::milliseconds(100));
+    }
+
+
+
+}
+
 /// FUNCIoN AUXILIAR DE ENVEJECIMIENTO
 // esta funcion evalua si un job ha estado esperando demasiado tiempo
 bool sufreInanicion(const Job& tarea) {
@@ -185,6 +223,26 @@ void ejecutarPrueba(int numProductores, int numConsumidores, int tareasPorProduc
     for (auto& p : productores) p.join();
     for (auto& c : consumidores) c.join();
 }
+void ejecutarPruebaEspecial(int numProductores, int numConsumidores, int tareasPorProductor) {
+    std::vector<std::thread> productores;
+    std::vector<std::thread> consumidores;
+    // Calculamos cuánto le toca a cada consumidor
+    int totalTareas = numProductores * tareasPorProductor;
+    int tareasPorConsumidor = totalTareas > 0 ? (totalTareas / numConsumidores) : 0;
+    //lanzar hilos productores
+    for (int i = 0; i < numProductores; ++i) {
+        productores.emplace_back(productorEspecial, i + 1, tareasPorProductor);
+    }
+    //lanzar hilos consumidores
+    for (int i = 0; i < numConsumidores; ++i) {
+        consumidores.emplace_back(consumidor, i + 1, tareasPorConsumidor);
+    }
+    //esperar a que todos terminen su ciclo
+    for (auto& p : productores) p.join();
+    for (auto& c : consumidores) c.join();
+
+}
+
 
 int obtenerTrabajosFinalizados() {
     std::unique_lock<std::mutex> lock(mtx_contador);
