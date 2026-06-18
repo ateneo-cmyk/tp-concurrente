@@ -205,42 +205,59 @@ void consumidor(int idConsumidor, int cantidadTareas) {
         }//Se libera mtx_contador.
     }
 }
+// helper: reparte totalTareas entre numConsumidores devolviendo asignaciones por consumidor
+static std::vector<int> distribuirTareas(int totalTareas, int numConsumidores) {
+    std::vector<int> asignaciones;
+    if (numConsumidores <= 0) return asignaciones;
+    asignaciones.assign(numConsumidores, 0);
+    int base = totalTareas / numConsumidores;
+    int rem = totalTareas % numConsumidores;
+    for (int i = 0; i < numConsumidores; ++i) {
+        asignaciones[i] = base + (i < rem ? 1 : 0);
+    }
+    return asignaciones;
+}
+
 void ejecutarPrueba(int numProductores, int numConsumidores, int tareasPorProductor) {
     std::vector<std::thread> productores;
     std::vector<std::thread> consumidores;
-    // Calculamos cuánto le toca a cada consumidor
+
     int totalTareas = numProductores * tareasPorProductor;
-    int tareasPorConsumidor = totalTareas > 0 ? (totalTareas / numConsumidores) : 0;
-    //lanzar hilos productores
+    auto asignaciones = distribuirTareas(totalTareas, numConsumidores);
+
+    // lanzar hilos productores
     for (int i = 0; i < numProductores; ++i) {
         productores.emplace_back(productor, i + 1, tareasPorProductor);
     }
-    //lanzar hilos consumidores
+    // lanzar hilos consumidores con asignación exacta
     for (int i = 0; i < numConsumidores; ++i) {
-        consumidores.emplace_back(consumidor, i + 1, tareasPorConsumidor);
+        int asignadas = (i < (int)asignaciones.size()) ? asignaciones[i] : 0;
+        consumidores.emplace_back(consumidor, i + 1, asignadas);
     }
-    //esperar a que todos terminen su ciclo
+    // esperar a que todos terminen su ciclo
     for (auto& p : productores) p.join();
     for (auto& c : consumidores) c.join();
 }
+
 void ejecutarPruebaEspecial(int numProductores, int numConsumidores, int tareasPorProductor) {
     std::vector<std::thread> productores;
     std::vector<std::thread> consumidores;
-    // Calculamos cuánto le toca a cada consumidor
+
     int totalTareas = numProductores * tareasPorProductor;
-    int tareasPorConsumidor = totalTareas > 0 ? (totalTareas / numConsumidores) : 0;
-    //lanzar hilos productores
+    auto asignaciones = distribuirTareas(totalTareas, numConsumidores);
+
+    // lanzar hilos productores especiales
     for (int i = 0; i < numProductores; ++i) {
         productores.emplace_back(productorEspecial, i + 1, tareasPorProductor);
     }
-    //lanzar hilos consumidores
+    // lanzar hilos consumidores con asignación exacta
     for (int i = 0; i < numConsumidores; ++i) {
-        consumidores.emplace_back(consumidor, i + 1, tareasPorConsumidor);
+        int asignadas = (i < (int)asignaciones.size()) ? asignaciones[i] : 0;
+        consumidores.emplace_back(consumidor, i + 1, asignadas);
     }
-    //esperar a que todos terminen su ciclo
+    // esperar a que todos terminen su ciclo
     for (auto& p : productores) p.join();
     for (auto& c : consumidores) c.join();
-
 }
 
 
