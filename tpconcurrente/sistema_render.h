@@ -20,4 +20,5 @@ void productor(int idProductor, int cantidadTareas);
 void consumidor(int idConsumidor, int cantidadTareas);
 int obtenerTrabajosFinalizados();
 void ejecutarPrueba(int numProductores, int numConsumidores, int tareasPorProductor);
+void mantenimiento(int cantidadfallas);
 #endif // SISTEMA_RENDER_H_INCLUDED

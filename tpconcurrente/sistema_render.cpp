@@ -11,6 +11,9 @@
 /// RECURSOS COMPARTIDOS
 int generador_id = 0;
 std::mutex mtx_jobId;
+std::vector<int> q_pool;
+std::mutex mtx_q;
+Semaforo hay_slots_q;
 
 /// Buffer 1
 std::vector<Job> buffer_mensajes;
@@ -40,6 +43,7 @@ std::mutex mtx_contador;
 void inicializarSistema() {
     init(hay_tareas, 0);
     init(slots_vram, 5);
+    init(hay_slots_q, 0);
 }
 
 
@@ -190,6 +194,7 @@ void consumidor(int idConsumidor, int cantidadTareas) {
 
         std::this_thread::sleep_for(std::chrono::milliseconds(600));
 
+        bool falla = (rand() % 100) < 20;
 
 
         ///SALIDA DE VRAM
@@ -197,6 +202,17 @@ void consumidor(int idConsumidor, int cantidadTareas) {
         {
             /// Tomamos el candado de liberacion
             std::unique_lock<std::mutex> lockLiberacion(mtx_liberacion);
+
+            if(falla){
+                memoria_vram[mi_slot] = -2;
+                {
+                    std::unique_lock<std::mutex> LockQ(mtx_q);
+                    q_pool.push_back(mi_slot);
+                }
+                logEvent(jobActual.id, jobActual.prioridad, "FALLA_HARDWARE");
+                signal(hay_slots_q);
+            }
+            else {
 
             memoria_vram[mi_slot] = -1;
             logEvent(jobActual.id, jobActual.prioridad, "FINALIZADO");
@@ -206,6 +222,7 @@ void consumidor(int idConsumidor, int cantidadTareas) {
 
         } //se libera mtx_liberacion.
 
+        }
         ///devolvemos el "ticket" de la VRAM al semáforo general,
         /// despertando a algún hilo que estuviera esperando en wait(slots_vram).
         signal(slots_vram);
@@ -227,6 +244,7 @@ void consumidor(int idConsumidor, int cantidadTareas) {
 void ejecutarPrueba(int numProductores, int numConsumidores, int tareasPorProductor) {
     std::vector<std::thread> productores;
     std::vector<std::thread> consumidores;
+    std::thread hilomantenimiento(mantenimiento, 100);
 
     // Calculamos cuánto le toca a cada consumidor
     int totalTareas = numProductores * tareasPorProductor;
@@ -245,10 +263,29 @@ void ejecutarPrueba(int numProductores, int numConsumidores, int tareasPorProduc
     //esperar a que todos terminen su ciclo
     for (auto& p : productores) p.join();
     for (auto& c : consumidores) c.join();
+    hilomantenimiento.join();
 }
 
+void mantenimiento(int cantidadfallas){
 
-
+    for(int i = 0; i < cantidadfallas; i++){
+        wait(hay_slots_q);
+        int slot;
+        {
+            std::unique_lock<std::mutex> LockQ(mtx_q);
+            slot = q_pool.back();
+            q_pool.pop_back();
+        }
+        logEvent(-1, -1, "INICIO_REPARACION");
+        std::this_thread::sleep_for(std::chrono::milliseconds(220));
+        {
+            std::unique_lock<std::mutex> LockLiberacion;
+            memoria_vram[slot] = -1;
+        }
+        signal(slots_vram);
+        logEvent(-1, -1, "SLOT_REPARADO");
+    }
+}
 
 
 int obtenerTrabajosFinalizados() {

@@ -24,8 +24,8 @@
         case 1:
             std::cout << "\nEjecutando Configuracion C...\n";
             //ejecutarPrueba(1, 2, 15);
-            //ejecutarPrueba(3, 3, 15);
-            ejecutarPrueba(3, 1, 15);
+            ejecutarPrueba(3, 3, 15);
+            //ejecutarPrueba(3, 1, 15);
 
             break;
         case 2:
