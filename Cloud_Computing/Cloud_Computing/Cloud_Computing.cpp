@@ -5,13 +5,13 @@
 #include <chrono>
 #include <cstdlib>
 int main() {
-    ///inicializar los semaforos
+ 
     inicializarSistema();
 
     int opcion;
 
     std::cout << "=== SIMULADOR DE RENDERIZADO ===\n";
-    std::cout << "1. Prueba Config C (3 Productores, 1 Consumidor - 45 tareas c/u)\n";// las tareas se dividen dependiendo cuantos consumidores tengas
+    std::cout << "1. Prueba Config C (3 Productores, 1 Consumidor - 45 tareas c/u)\n";
     std::cout << "2. Prueba Carga Masiva (1 Productor inyectando 1500 jobs, 3 Consumidores)\n";
     std::cout << "3. Prueba de Vacuidad (0 Jobs)\n";
 	std::cout << "4. Prueba de Saturacion de Recursos (8 Jobs Premium)\n";
@@ -21,9 +21,8 @@ int main() {
     switch (opcion) {
     case 1:
         std::cout << "\nEjecutando Configuracion C...\n";
-		//ejecutarPrueba(1, 2, 15); // 15 tareas para 1 productor, 2 consumidores, cada consumidor se encarga de procesar 15 tareas (30 tareas en total)
-		//ejecutarPrueba(3, 3, 15); // 15 tareas para 3 productores, 3 consumidores, cada consumidor se encarga de procesar 15 tareas (45 tareas en total)
-		ejecutarPrueba(3, 1, 15);// 15 tareas para 3 productores, 1 consumidor, el consumidor se encarga de procesar las 45 tareas (15 por productor)   
+		
+		ejecutarPrueba(3, 1, 15);
 
         break;
     case 2:
@@ -36,8 +35,8 @@ int main() {
         break;
     case 4:
 		std::cout << "\nEjecutando Prueba de Saturacion de Recursos 8 Jobs Premium\n";
-		// comentar linea de prioridad aleatoria en productor para que todas las tareas sean premium
-        ejecutarPruebaEspecial(1, 3, 8); // 8 tareas Premium generadas por productores fijos
+		
+        ejecutarPruebaEspecial(1, 3, 8); 
 		break;
     default:
         std::cout << "\nOpcion invalida.\n";
@@ -48,7 +47,7 @@ int main() {
     std::cout << "Trabajos finalizados con exito: " << obtenerTrabajosFinalizados() << "\n";
     std::cout << "Revise la consola o el archivo 'sistema.log' para la auditoria.\n";
 
-    // Pausa para que la consola permanezca abierta al finalizar (Windows)
+    
     std::system("pause");
 
     return 0;

@@ -1,7 +1,7 @@
 #pragma once
 #include <mutex>
 #include <condition_variable>
-/// ESTRUCTURA SEMAFORO
+
 struct Semaforo {
 
     int contador=0;

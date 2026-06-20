@@ -2,14 +2,13 @@
 #include <chrono>
 struct Job {
     int id;
-    int prioridad; // 1: Premium, 0: Free
+    int prioridad;
     std::chrono::time_point<std::chrono::steady_clock> timestamp_creacion;
 
-    ///declaramos el operador para la priority_queue
-    //bool operator<(const Job& otro) const;
+   
 };
 
-///interfaz del sistema
+
 void inicializarSistema();
 
 void productor(int idProductor, int cantidadTareas);
