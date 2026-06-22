@@ -17,3 +17,5 @@ int obtenerTrabajosFinalizados();
 void ejecutarPrueba(int numProductores, int numConsumidores, int tareasPorProductor);
 void productorEspecial(int idProductor, int cantidadTareas);
 void ejecutarPruebaEspecial(int numProductores, int numConsumidores, int tareasPorProductor);
+
+void imprimirRechazados();

@@ -22,7 +22,7 @@ int trabajosFinalizados = 0;
 std::mutex mtx_contador;
 
 static const int prioridadFija = 1; 
-
+std::vector<Job> Trash_Queue;
 
 void inicializarSistema() {
     init(hay_tareas, 0);
@@ -116,18 +116,32 @@ void consumidor(int idConsumidor, int cantidadTareas) {
             
             std::unique_lock<std::mutex> lockCola(mtx_cola);
             int indiceSeleccionado = -1;
-
+			bool estoyRechazado = false;
             
             for (size_t i = 0; i < buffer_mensajes.size(); ++i) {
                 if (buffer_mensajes[i].prioridad == 0) {
                     if (sufreInanicion(buffer_mensajes[i])) {
-                        indiceSeleccionado = i;
-                        logEvent(buffer_mensajes[i].id, 0, "RESCATE_INANICION");
-                        break;
+                        auto ahora = std::chrono::steady_clock::now();
+                        auto tiempoEspera = std::chrono::duration_cast<std::chrono::milliseconds>(ahora - buffer_mensajes[i].timestamp_creacion).count();
+                        if (tiempoEspera >= 10000) {
+                            
+                            logEvent(buffer_mensajes[i].id, 0, "DESECHADO_TIMEOUT");
+
+                            
+                            Trash_Queue.push_back(buffer_mensajes[i]);
+
+                       
+                            buffer_mensajes.erase(buffer_mensajes.begin() + i);
+                            estoyRechazado = true;
+                            break;
+                        }
                     }
                 }
             }
+            if (estoyRechazado) {
             
+                continue;
+            }
             if (indiceSeleccionado == -1) {
                 for (size_t i = 0; i < buffer_mensajes.size(); ++i) {
                     if (buffer_mensajes[i].prioridad == 1) {
@@ -240,7 +254,16 @@ void ejecutarPruebaEspecial(int numProductores, int numConsumidores, int tareasP
     for (auto& p : productores) p.join();
     for (auto& c : consumidores) c.join();
 }
-
+void imprimirRechazados() {
+	std::unique_lock<std::mutex> lock(mtx_cola);
+	if (Trash_Queue.empty()) {
+		std::cout << "No hay trabajos rechazados.\n";
+		return;
+	}
+	for (const auto& job : Trash_Queue) {
+		std::cout << "Job ID: " << job.id << ", Prioridad: " << job.prioridad << "\n";
+	}
+}
 
 int obtenerTrabajosFinalizados() {
     std::unique_lock<std::mutex> lock(mtx_contador);

@@ -1,4 +1,5 @@
 #include "sistema_render.h"
+//#include "sistema_render.cpp"
 #include <iostream>
 #include <thread>
 #include <vector>
@@ -49,7 +50,10 @@ int main() {
 
     
     std::system("pause");
-
+ 
+    std::cout << " --------------------------------------------------------------------------------------------------\n" << std::endl;
+    std::cout << "JOBS RECHAZADOS";
+    imprimirRechazados();   
     return 0;
 }
 
